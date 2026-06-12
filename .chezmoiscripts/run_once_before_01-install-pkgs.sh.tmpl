@@ -10,14 +10,32 @@
 {{ if eq .chezmoi.os "darwin" }}
 if [[ ! -d "/opt/homebrew" ]]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  local brew='/opt/homebrew/bin/brew'
+  $brew update
+  $brew install font-maple-mono \
+    font-maple-mono-nf \
+    font-maple-mono-nf-cn \
+    font-jetbrains-mono-nerd-font \
+    font-ubuntu-mono-nerd-font
 fi
 
 {{ else if $isWSL }}
 if [[ ! -d "/home/linuxbrew" ]]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  
+  local brew='/home/linuxbrew/bin/brew'
+  $brew update
+  $brew install font-maple-mono \
+    font-maple-mono-nf \
+    font-maple-mono-nf-cn \
+    font-jetbrains-mono-nerd-font \
+    font-ubuntu-mono-nerd-font
 fi
+
+{{ else }}
+# pacman install
 
 {{ end }}
 
-# brew install nvim node@24
 {{ end }}
