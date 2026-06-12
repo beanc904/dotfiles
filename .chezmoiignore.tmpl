@@ -1,0 +1,24 @@
+source
+README.md
+
+{{ if eq .chezmoi.os "windows" }}
+# ignore in Windows
+.config/kitty
+.config/nvim
+.config/zed
+.config/yazi
+.zshrc.d
+.zshrc
+{{ else }}
+# ignore in unix
+AppData
+Documents
+{{- if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+# WSL
+.config/kitty
+.config/zed
+{{- else }}
+# not WSL (mac | linux)
+
+{{- end }}
+{{ end }}

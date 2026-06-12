@@ -1,0 +1,16 @@
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[core]
+	editor = nvim
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  dark = true
+  side-by-side = true
+[merge]
+  conflictstyle = zdiff3
+[user]
+	name = Coffee Bean
+	email = beanc904@gmail.com

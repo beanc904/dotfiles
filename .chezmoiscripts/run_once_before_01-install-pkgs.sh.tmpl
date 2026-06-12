@@ -1,0 +1,23 @@
+{{ if ne .chezmoi.os "windows" -}}
+
+#!/bin/bash
+
+{{ $isWSL := and
+    (eq .chezmoi.os "linux")
+    (contains "microsoft" (.chezmoi.kernel.osrelease | lower))
+}}
+
+{{ if eq .chezmoi.os "darwin" }}
+if [[ ! -d "/opt/homebrew" ]]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+{{ else if $isWSL }}
+if [[ ! -d "/home/linuxbrew" ]]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+{{ end }}
+
+# brew install nvim node@24
+{{ end }}

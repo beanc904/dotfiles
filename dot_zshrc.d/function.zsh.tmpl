@@ -1,0 +1,79 @@
+# Description: Change to the directory output by yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+# Description: Enable | Disable the global proxy
+function proxy() {
+  source $COLOR_SCHEME_INCLUDE
+
+  if [[ $1 == "on" ]]; then
+    export http_proxy=http://127.0.0.1:7897
+    export https_proxy=http://127.0.0.1:7897
+    export all_proxy=socks5://127.0.0.1:7897
+    success "Terminal proxy is now enabled"
+  elif [[ $1 == "off" ]]; then
+    unset http_proxy https_proxy all_proxy
+    success "Terminal proxy is now disabled"
+  else
+    error "Usage: proxy [on|off]"
+  fi
+}
+
+function praxy() {
+  source $COLOR_SCHEME_INCLUDE
+
+  if [[ $1 == "on" ]]; then
+    export http_proxy=http://127.0.0.1:7890
+    export https_proxy=http://127.0.0.1:7890
+    export all_proxy=socks5://127.0.0.1:7890
+    success "Terminal proxy is now enabled"
+  elif [[ $1 == "off" ]]; then
+    unset http_proxy https_proxy all_proxy
+    success "Terminal proxy is now disabled"
+  else
+    error "Usage: proxy [on|off]"
+  fi
+}
+
+
+function chezmoi-sync() {
+  source $COLOR_SCHEME_INCLUDE
+  local action="$1"
+  local repo="$HOME/.local/share/chezmoi"
+
+{{- if eq .chezmoi.os "darwin" }}
+# darwin
+  local symbol='mac'
+{{- else if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+# wsl
+  local symbol='wsl'
+{{- else }}
+# physical machine
+  local symbol='arch'
+{{- end }}
+
+  case "$action" in
+    pull)
+      chezmoi git pull -- --autostash --rebase && chezmoi diff
+    ;;
+    push)
+      git --git-dir="$repo/.git" --work-tree="$repo" add .
+      git --git-dir="$repo/.git" --work-tree="$repo" commit \
+        -m "Auto Sync ($symbol): $(date '+%Y-%m-%d %T')"
+
+      if git --git-dir="$repo/.git" --work-tree="$repo" push origin main; then
+        success "Chezmoi settings pushed to remote repository"
+      else
+        error "Something went wrong during push process"
+      fi
+    ;;
+    *)
+      error "Usage: chezmoi-sync [pull|push]"
+    ;;
+  esac
+}
