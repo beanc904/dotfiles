@@ -1,1 +1,1 @@
-export MEDIA_DIR="/mnt"
+export MEDIA_DIR="/run/media"
