@@ -1,5 +1,5 @@
-{{- if eq .chezmoi.osRelease.id "arch" }}
-//   _____ _____ _____ _____ _____ _____ _____ _____ _____ 
+{{- if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "arch") }}
+//   _____ _____ _____ _____ _____ _____ _____ _____ _____
 //  |   __|  _  |   __|_   _|   __|   __|_   _|     |  |  |
 //  |   __|     |__   | | | |   __|   __| | | |   --|     |
 //  |__|  |__|__|_____| |_| |__|  |_____| |_| |_____|__|__|  HYPRLAND
@@ -45,22 +45,22 @@
             "type": "packages",
             "format": "{} (pacman)",
             "key": " ",
-            "keyColor": "34",  
+            "keyColor": "34",
         },
         {
             "type": "shell",
             "key": " ",
-            "keyColor": "34", 
+            "keyColor": "34",
         },
         {
             "type": "terminal",
             "key": " ",
-            "keyColor": "34", 
+            "keyColor": "34",
         },
         {
             "type": "wm",
             "key": " ",
-            "keyColor": "34", 
+            "keyColor": "34",
         },
         {
             "type": "display",
@@ -103,7 +103,7 @@
         {
             "type": "uptime",
             "key": " ",
-            "keyColor": "34", 
+            "keyColor": "34",
         },
         {
             "type": "command",
@@ -264,7 +264,7 @@
             "paddingLeft": 2,
             "symbol": "circle"
         }
- 
+
     ]
 }
 {{- end }}

@@ -10,7 +10,7 @@ function y
     Remove-Item -Path $tmp
 }
 
-oh-my-posh.exe init pwsh --config $env:POSH_THEMES_PATH\atomic.omp.json | Invoke-Expression
+oh-my-posh.exe init pwsh --config $env:POSH_THEMES_PATH\amro.omp.json | Invoke-Expression
 
 Import-Module posh-git # 引入 posh-git
 Import-Module PSReadLine # 历史命令联想
