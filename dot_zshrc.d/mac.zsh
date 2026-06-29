@@ -5,6 +5,10 @@ export PATH="/opt/homebrew/opt/util-linux/sbin:$PATH"
 # export LDFLAGS="-L/opt/homebrew/opt/qt@5/lib"
 # export CPPFLAGS="-I/opt/homebrew/opt/qt@5/include"
 
+export PATH="/opt/homebrew/opt/node@24/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/node@24/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/node@24/include"
+
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
