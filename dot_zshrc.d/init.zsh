@@ -1,16 +1,3 @@
-###################################
-# ANCHOR: Common tools initialize #
-###################################
-
-eval "$(zoxide init zsh)"
-eval "$(thefuck --alias)"
-# eval "$(starship init zsh)"
-
-#######################################
-# ANCHOR_END: Common tools initialize #
-#######################################
-
-
 ################################
 # ANCHOR: Oh My Zsh initialize #
 ################################
@@ -132,3 +119,18 @@ fi
 ####################################
 # ANCHOR_END: Oh My Zsh initialize #
 ####################################
+
+
+###################################
+# ANCHOR: Common tools initialize #
+###################################
+
+eval "$(zoxide init zsh)"
+eval "$(thefuck --alias)"
+# eval "$(starship init zsh)"
+source <(fzf --zsh)
+
+#######################################
+# ANCHOR_END: Common tools initialize #
+#######################################
+
