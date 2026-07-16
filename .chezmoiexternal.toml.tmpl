@@ -20,5 +20,16 @@
     url = "https://github.com/dexpota/kitty-themes/archive/1.0.0.tar.gz"
     exact = true
     stripComponents = 1
+[".config/tmux/plugins/catppuccin/tmux"]
+    type = "git-repo"
+    url = "https://github.com/catppuccin/tmux.git"
+    [".config/tmux/plugins/catppuccin/tmux".clone]
+        args = ["-b v2.3.0"]
+[".config/tmux/plugins/tmux-cpu"]
+    type = "git-repo"
+    url = "https://github.com/tmux-plugins/tmux-cpu.git"
+[".config/tmux/plugins/tmux-battery"]
+    type = "git-repo"
+    url = "https://github.com/tmux-plugins/tmux-battery.git"
 
 {{ end }}
