@@ -54,3 +54,8 @@ unset __mamba_setup
 
 
 export MEDIA_DIR="/mnt"
+
+
+zed() {
+    /mnt/c/Users/$(cmd.exe /c "echo %USERNAME%" 2>/dev/null | tr -d '\r')/scoop/shims/zed.exe --wsl "$USER@$WSL_DISTRO_NAME" "$@"
+}
