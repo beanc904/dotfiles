@@ -19,3 +19,6 @@ inoremap <Tab> <C-n>
 inoremap <S-Tab> <C-p>
 
 set surround
+set relativenumber
+set number
+
