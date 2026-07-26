@@ -19,4 +19,6 @@ return {
   -- import/override with your plugins folder
   { import = "astrocommunity.recipes.neovide" },
   { import = "astrocommunity.pack.chezmoi" },
+  -- You have to install `code-minimap` in system package manager
+  { import = "astrocommunity.split-and-window.minimap-vim" },
 }
