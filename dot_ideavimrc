@@ -10,12 +10,11 @@ vnoremap K :m '<-2<CR>gv=gv
 " 一些常用 nvim 快捷键映射
 nnoremap gd :action GotoDeclaration<CR>
 
-vnoremap <leader>f :action ReformatCode<CR>
-nnoremap <leader>f :action ReformatCode<CR>
+vnoremap <leader>lf :action ReformatCode<CR>
+nnoremap <leader>lf :action ReformatCode<CR>
+nnoremap <leader>ln :action RenameElement<CR>
 
-nnoremap <leader>rn :action RenameElement<CR>
-
-inoremap <Tab> <C-n>
+" inoremap <Tab> <C-n>
 inoremap <S-Tab> <C-p>
 
 set surround

@@ -31,13 +31,14 @@ function M.reset_scale()
 end
 
 function M.get_font()
+  local font = "JetBrainsMono Nerd Font"
   local sysname = vim.loop.os_uname().sysname
   if sysname == "Linux" then
-    return "Maple Mono NF:h12"
+    return font .. ":h12"
   elseif sysname == "Darwin" then
-    return "Maple Mono NF:h14"
+    return font .. ":h14"
   else
-    return "Maple Mono NF:h16"
+    return font .. ":h16"
   end
 end
 
